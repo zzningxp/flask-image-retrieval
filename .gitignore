@@ -1,0 +1,9 @@
+data
+doc
+db
+models
+tmp
+
+*.swp
+*.pyc
+*.DS_Store
