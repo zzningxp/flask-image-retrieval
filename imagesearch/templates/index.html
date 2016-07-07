@@ -1,12 +1,11 @@
 <!doctype html>
-<title>Image Uploader</title>
+<title>Image Retrieval</title>
 <meta charset="utf-8" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/vader/jquery-ui.css" />
+<script src="/data/static/jquery.min.js"></script>
+<script src="/data/static/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="/data/static/jquery-ui.css" />
 <style>
   body {
-    max-width: 800px;
     margin: auto;
     padding: 1em;
     background: black;
@@ -35,6 +34,10 @@
     margin:8px 4px 4px 4px;
 } 
 
+#status {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
 #drop {
     font-weight: bold;
     text-align: center;
@@ -44,6 +47,8 @@
     border: 2px dashed #555;
     border-radius: 7px;
     cursor: default;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 
 #drop.hover {

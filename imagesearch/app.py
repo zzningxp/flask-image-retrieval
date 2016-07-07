@@ -13,6 +13,12 @@ import image_retrieval
 
 DATA_DIR = 'data'
 asyncresult = {}
+tic = time.time()
+caffenet = image_caffe.CaffeNet()
+print '------  prepared caffe net for %f s ------'%(time.time()-tic)
+tic = time.time()
+retri = image_retrieval.Retriever()
+print '------  prepared retriever for %f s ------'%(time.time()-tic)
 
 app = flask.Flask(__name__, static_folder=DATA_DIR)
 app._static_folder = os.path.abspath(DATA_DIR)
@@ -55,12 +61,13 @@ def receive(imageid):
 
 @app.route('/post', methods=['POST'])
 def post():
+    print 'Posted at ', time.strftime("%H:%M:%S", time.localtime())
     sha1sum = sha1(flask.request.data + str(time.time())).hexdigest()
     target = os.path.join(DATA_DIR, '{0}.jpg'.format(sha1sum))
     try:
         if image_prehandler.save_normalized_image(target, flask.request.data):
-            if image_caffe.feature_exact(target):
-                list = image_retrieval.retrieval(target)
+            if caffenet.feature_exact(target):
+                list = retri.retrieval(target)
             message = {'src': target, 'ip_addr': safe_addr(flask.request.access_route[0]), 'resultsize': len(list)}
             for i,img in enumerate(list):
                 message['result%s'%i] = img
@@ -76,4 +83,4 @@ def safe_addr(ip_addr):
     return '.'.join(ip_addr.split('.')[:2] + ['xxx', 'xxx'])
 
 if __name__ == '__main__':
-    app.run(threaded=True)
+    app.run(host='0.0.0.0', threaded=True)

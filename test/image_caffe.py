@@ -5,8 +5,10 @@ import pandas as pd
 
 class TestImageCaffe(unittest.TestCase):
     def testCaffe(self):
+        print '++++'
         fn = 'test/test.jpg'
-        image_caffe.feature_exact(fn)
+        caffenet = image_caffe.CaffeNet()
+        caffenet.feature_exact(fn)
         res = pd.read_csv('%s.csv'%fn, header=None).as_matrix()
         print res,res.shape
 
