@@ -24,20 +24,33 @@
 
 .retrievalblock { 
     float:left;
-    border:1px solid #F00;
-    margin:8px 4px 4px 4px;
+    border:3px solid #F00;
+    margin:4px;
+    width: 224px;
+    height: 224px;
+    padding: 3px;
 } 
 
 .resultblock { 
     float:left;
     border:1px solid #00F;
-    margin:8px 4px 4px 4px;
-} 
+    margin:4px;
+    height: 224px;
+    padding: 5px;
+}
+
+.resultimage {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+}
 
 #status {
     margin-top: 1px;
     margin-bottom: 1px;
 }
+
 #drop {
     font-weight: bold;
     text-align: center;
@@ -75,16 +88,19 @@
               return;
           var data = $.parseJSON(e.data);
           var upload_message = '';
-          var image = $('<img>', {alt: upload_message, src: data['src']});
+          var image = $('<img>', {alt: upload_message, src: data['src'], class:'resultimage'});
           var container = $('<div class=retrievalblock>');
           container.append($('<div>', {text: upload_message}));
           container.append(image);
           $('#images').empty().append(container);
           resultsize = parseInt(data['resultsize'])
           for (var i=0;i<resultsize;i++){
-            var ix = $('<img>', {src:'data/' + data['result'+i.toString()]});
+            var tx = $('<span>', {text: data['catagory'+i.toString()]})
+            var ix = $('<img>', {src:'data/' + data['result'+i.toString()], class:'resultimage'});
             var cx = $('<div class=resultblock>');
             cx.append(ix);
+            cx.append('<br>');
+            cx.append(tx);
             $('#images').append(cx);
           }
           e.target.close();
