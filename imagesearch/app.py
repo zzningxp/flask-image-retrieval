@@ -67,11 +67,11 @@ def post():
     try:
         if image_prehandler.save_normalized_image(target, flask.request.data):
             if caffenet.feature_exact(target):
-                list, cata = retri.retrieval(target)
+                list, cate = retri.retrieval(target)
             message = {'src': target, 'ip_addr': safe_addr(flask.request.access_route[0]), 'resultsize': len(list)}
             for i,img in enumerate(list):
                 message['result%s'%i] = img
-                message['catagory%s'%i] = cata[i]
+                message['category%s'%i] = cate[i]
             asyncresult[sha1sum] = json.dumps(message)
     except Exception as e:  # Output errors
         print e

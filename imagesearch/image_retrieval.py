@@ -12,10 +12,10 @@ class Retriever(object):
         self.nf = h5py.File('db/'+dir+'/db_filename.h5')
         self.queryDB = np.array(self.qf['feat_db'])
         self.path = np.array(self.nf['list_im']).flatten()
-        if 'cata_im' in self.nf:
-            self.cata = np.array(self.nf['cata_im']).flatten()
+        if 'cate_im' in self.nf:
+            self.cate = np.array(self.nf['cate_im']).flatten()
         else:
-            self.cata = []
+            self.cate = []
     
     def retrieval(self, img_name):
         tic = time.time()
@@ -30,12 +30,12 @@ class Retriever(object):
         ##print dists, ind, path, path.shape
         k = 100
         ret = [self.path[i] for i in ind[:k]]
-        if len(self.cata) > 0:
-            cata = [self.cata[i] for i in ind[:k]]
+        if len(self.cate) > 0:
+            cate = [self.cate[i] for i in ind[:k]]
         else:
-            cata = ['' for i in ind[:k]]
+            cate = ['' for i in ind[:k]]
         
         print '---- Retieval for %f s ----'%(time.time()-tic)
         #print ret
-        return ret, cata
+        return ret, cate
 

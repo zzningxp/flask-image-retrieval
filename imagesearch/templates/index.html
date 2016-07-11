@@ -95,7 +95,7 @@
           $('#images').empty().append(container);
           resultsize = parseInt(data['resultsize'])
           for (var i=0;i<resultsize;i++){
-            var tx = $('<span>', {text: data['catagory'+i.toString()]})
+            var tx = $('<span>', {text: data['category'+i.toString()]})
             var ix = $('<img>', {src:'data/' + data['result'+i.toString()], class:'resultimage'});
             var cx = $('<div class=resultblock>');
             cx.append(ix);
