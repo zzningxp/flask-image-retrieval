@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import h5py
 from scipy.spatial.distance import cdist
+from sklearn import preprocessing
 import time
 
 class Retriever(object):
@@ -21,6 +22,7 @@ class Retriever(object):
         tic = time.time()
 
         queryImg = pd.read_csv('%s.csv'%img_name,header=None).as_matrix()
+        queryImg = preprocessing.normalize(queryImg, norm='l2')
     
         #print queryDB, queryDB.shape
         #print queryImg, queryImg.shape
