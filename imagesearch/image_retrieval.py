@@ -7,8 +7,8 @@ import time
 
 class Retriever(object):
     def __init__(self):
-        dir = 'imagenet2010_fc7'
-        #dir = 'py_vgg16_fc7'
+        #dir = 'imagenet2010_fc7'
+        dir = 'py_vgg16_fc7'
         self.qf = h5py.File('db/'+dir+'/db_feat4096.h5')
         self.nf = h5py.File('db/'+dir+'/db_filename.h5')
         self.queryDB = np.array(self.qf['feat_db'])
