@@ -9,8 +9,14 @@ class Retriever(object):
     def __init__(self):
         #dir = 'imagenet2010_fc7'
         dir = 'py_vgg16_fc7'
-        self.qf = h5py.File('db/'+dir+'/db_feat4096.h5')
-        self.nf = h5py.File('db/'+dir+'/db_filename.h5')
+       # self.qf = h5py.File('db/'+dir+'/db_feat4096.h5')
+       # self.nf = h5py.File('db/'+dir+'/db_filename.h5')
+
+	#chenxinyuan
+	self.qf = h5py.File('/home/cxy/code/imagesearch/db/feature_db.h5')
+        self.nf = h5py.File('/home/cxy/code/imagesearch/db/name_db.h5')
+
+
         self.queryDB = np.array(self.qf['feat_db'])
         self.signDB = np.sign(self.queryDB)
         self.path = np.array(self.nf['list_im']).flatten()
@@ -32,6 +38,7 @@ class Retriever(object):
         res.sort(key=lambda tup: tup[1], reverse=True)
         ind = [x[0] for x in res]
         return ind
+	
 
     def retrieval(self, img_name):
         tic = time.time()
@@ -41,8 +48,8 @@ class Retriever(object):
         #ind = self.euclidean_dist(queryImg)
         ind = self.hamming_dist(queryImg)
     
-        ##print dists, ind, path, path.shape
-        k = 100
+        print  ind, self.path, self.path.shape
+        k = 60
         ret = [self.path[i] for i in ind[:k]]
         if len(self.cate) > 0:
             cate = [self.cate[i] for i in ind[:k]]
