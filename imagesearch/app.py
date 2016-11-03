@@ -1,6 +1,7 @@
 import simplejson as json
 from flask import render_template, request, make_response, send_file, redirect, url_for, Markup
 import flask
+from flask import *
 import sys
 from shutil import rmtree
 import os
@@ -10,6 +11,9 @@ from hashlib import sha1
 import image_prehandler
 import image_caffe
 import image_retrieval
+import matplotlib 
+matplotlib.use('Agg') 
+
 
 DATA_DIR = 'data'
 asyncresult = {}

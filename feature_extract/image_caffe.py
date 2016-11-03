@@ -21,15 +21,15 @@ class CaffeNet(object):
         self.netinit()
         
     def netinit(self):
-        deffile = '/home/cxy/code/imagesearch/models/VGG16/deploy_l7.prototxt'
-        modfile = '/home/cxy/code/imagesearch/models/VGG16/VGG_ILSVRC_16_layers.caffemodel'
+        deffile = 'models/VGG16/deploy_l7.prototxt'
+        modfile = 'models/VGG16/VGG_ILSVRC_16_layers.caffemodel'
         self.net = caffe.Net(deffile,modfile,caffe.TEST)
         
     def feature_exact(self, img_name):
         tic = time.time()
     
         transformer = caffe.io.Transformer({'data': self.net.blobs['data'].data.shape})
-        transformer.set_mean('data', np.load('/home/cxy/code/imagesearch/db/ilsvrc_2012_mean.npy').mean(1).mean(1))
+        transformer.set_mean('data', np.load('db/ilsvrc_2012_mean.npy').mean(1).mean(1))
         transformer.set_transpose('data', (2,0,1))
         transformer.set_channel_swap('data', (2,1,0))
         transformer.set_raw_scale('data', 255.0)
