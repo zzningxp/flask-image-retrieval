@@ -4,11 +4,11 @@
 -------------------------------------------
 Python flask web service image retrieval project based https://github.com/kevinlin311tw/caffe-cvprw15 Matlab version.
 ## Introduction
-**flask image retrieval** is an image retrieval framework based on deep  convolutional networks implemented by python , it mainly includes image feature extract part (to form the feature library )and feature retrieval part( search the image accoding to similarity).
+**Flask image retrieval** is an image retrieval framework based on deep  convolutional networks implemented by python , it mainly includes image feature extract part (to form the feature library )and feature retrieval part( search the image accoding to similarity).
 This code has been tested on `ubuntu 14.04 LTS` and `python 2.7`.
 
 ##Install Caffe
-The Caffe version in this README is from `anaconda`, and it is configured to a `no-gpu version`.
+The Caffe version in this README is from `anaconda`, and it is configured to a `no-gpu version`. However, it has also been tested on GPU version.
 
 ###Install anaconda
 Download the `anaconda` from https://www.continuum.io/downloads, select the `python2.7` version. run to install anaconda
@@ -31,11 +31,11 @@ Use command below to install several dependencies automatically:
   - `protobuf`, `glog`, `gflags`  and so on
 ###Configure Caffe
 Configure the build by copying and modifying the example `Makefile.config` for your setup. Uncomment the relevant lines accoding to your anaconda python.
-uncomment to build without `GPU` support
+Uncomment to build without `GPU` support
 ```bash
 CPU_ONLY := 1
 ```
-if you're using `OpenCV 3`, set as below
+If you're using `OpenCV 3`, configure as below
 ```bash
 OPENCV_VERSION := 3
 OPENCV_INCLUDE := /Your/Anaconda/Path/pkgs/opencv3-3.1.0-py27_0/include
@@ -93,7 +93,3 @@ Verify the installation by running `python -c "import caffe;print caffe.__versio
 - Load your image and then it will show retrieval result automatically.
 
 
------------------------------1566275932192803735315933261
-Content-Disposition: form-data; name="mode"
-
-formupload
