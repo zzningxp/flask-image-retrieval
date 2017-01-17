@@ -7,14 +7,15 @@ Python flask web service image retrieval project based https://github.com/kevinl
 **flask image retrieval** is an image retrieval framework based on deep  convolutional networks implemented by python , it mainly includes image feature extract part (to form the feature library )and feature retrieval part( search the image accoding to similarity).
 This code has been tested on `ubuntu 14.04 LTS` and `python 2.7`.
 
-##Install caffe
-I install caffe use `anaconda`, and my caffe is `no-gpu version`.
+##Install Caffe
+The Caffe version in this README is from `anaconda`, and it is configured to a `no-gpu version`.
+
 ###Install anaconda
 Download the `anaconda` from https://www.continuum.io/downloads, select the `python2.7` version. run to install anaconda
 ```bash
 $ ./Anaconda.sh
 ```
-when install anaconda, many dependencies like below  will be installed automatically:
+When install anaconda, many dependencies like below  will be installed automatically:
   - `flask`:  Alightweight web application framework, this project is based on this web framework.
   - `pandas`: A data analysis package for Python
   - `qt` ,`numpy`,`matplotlib` and so on
@@ -22,13 +23,13 @@ when install anaconda, many dependencies like below  will be installed automatic
 ```bash
  $ conda install  -c conda-forge caffe
 ```
-Use command above to install several dependencies automatically:
+Use command below to install several dependencies automatically:
   - `opencv`: open source computer vision library
   - `lmdb`, `leveldb`,`snappy`:IO libraries (leveldb requires *snappy*)
   -  `openBLAS`: basic linear algebra subprograms, as the ackend of matrix and vector computations
   - `Boost` : c++ extension library
   - `protobuf`, `glog`, `gflags`  and so on
-###Configure caffe
+###Configure Caffe
 Configure the build by copying and modifying the example `Makefile.config` for your setup. Uncomment the relevant lines accoding to your anaconda python.
 uncomment to build without `GPU` support
 ```bash
@@ -68,6 +69,8 @@ $ make pycaffe
 ```
 
 Verify the installation by running `python -c "import caffe;print caffe.__version__"`
+
+
 ## Build your own feature library
 - You can download deploy file from [vgg_train_val.prototxt](http://cs.stanford.edu/people/karpathy/vgg_train_val.prototxt) and 
 - Download your own dataset and train your  model, it will generate `filename.caffemodel`file.
@@ -82,6 +85,7 @@ Verify the installation by running `python -c "import caffe;print caffe.__versio
  image_cateFile='/Your/Image/Path/image_cate.txt';
 ```
 - Run `feature_extract.py` and generate feature library file `feature_db.h5`.
+
 ##Run the demo
 - Run `feature_extract.py` to extract feature. the feature library will be saved in `hdf5` format.
 - Run `app.py` to make a link with browser.
