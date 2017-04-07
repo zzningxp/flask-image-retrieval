@@ -19,6 +19,8 @@ When install anaconda, many dependencies like below  will be installed automatic
   - `flask`:  Alightweight web application framework, this project is based on this web framework.
   - `pandas`: A data analysis package for Python
   - `qt` ,`numpy`,`matplotlib` and so on
+  - `simplejson`, `flask`, `pillow`, `scikit-image`
+
 ###Install dependencies
 ```bash
  $ conda install  -c conda-forge caffe
@@ -85,10 +87,6 @@ Verify the installation by running `python -c "import caffe;print caffe.__versio
  image_cateFile='/Your/Image/Path/image_cate.txt';
 ```
 
-sudo pip install simplejson
-sudo pip install flask
-sudo pip install pillow
-sudo pip install scikit-image
 
 - Run `feature_extract.py` and generate feature library file `feature_db.h5`.
 
