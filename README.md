@@ -84,6 +84,12 @@ Verify the installation by running `python -c "import caffe;print caffe.__versio
  imageBasePath = '/Your/Image/Path';
  image_cateFile='/Your/Image/Path/image_cate.txt';
 ```
+
+sudo pip install simplejson
+sudo pip install flask
+sudo pip install pillow
+sudo pip install scikit-image
+
 - Run `feature_extract.py` and generate feature library file `feature_db.h5`.
 
 ##Run the demo
